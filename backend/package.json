@@ -19,12 +19,16 @@
     "@types/node": "^24.10.0",
     "cors": "^2.8.5",
     "express": "^5.1.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",
     "@types/level": "^8.0.0",
+    "@types/swagger-jsdoc": "^6.0.4",
+    "@types/swagger-ui-express": "^4.1.8",
     "@types/uuid": "^11.0.0",
     "jest": "^30.2.0",
     "level": "^10.0.0",
