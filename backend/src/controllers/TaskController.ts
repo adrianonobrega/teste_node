@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { TaskService } from '../services/TaskService.js';
-import { NewTask, UpdateTask } from '../models/Task.js';
+import { NewTask, UpdateTask } from '../models/Task.js'; 
 
 const taskService = new TaskService();
 
@@ -14,7 +14,7 @@ export class TaskController {
             res.status(201).json(newTask);
         } catch (error: any) {
             if (error.message === 'Title is required') {
-                res.status(400).json({ message: error.message });
+                res.status(400).json({ message: error.message }); 
                 return;
             }
             console.error("Erro ao criar tarefa:", error);
@@ -22,7 +22,7 @@ export class TaskController {
         }
     }
 
-    async list(req: Request, res: Response): Promise<void> {
+    async list(_req: Request, res: Response): Promise<void> { 
         try {
             const tasks = await taskService.getAll();
             
@@ -92,11 +92,11 @@ export class TaskController {
             const wasDeleted = await taskService.delete(id);
             
             if (!wasDeleted) {
-                res.status(404).json({ message: 'Tarefa não encontrada' }); // 404 Not Found
+                res.status(404).json({ message: 'Tarefa não encontrada' });
                 return;
             }
             
-            res.status(204).send(); 
+            res.status(204).send();
         } catch (error) {
             console.error("Erro ao deletar tarefa:", error);
             res.status(500).json({ message: 'Erro interno ao deletar tarefa' });

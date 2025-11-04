@@ -1,6 +1,6 @@
 import { Level } from 'level';
 import { Task, NewTask, UpdateTask } from '../models/Task.js';
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid'; 
 
 const db = new Level<string, Task>('./data/tasks', { valueEncoding: 'json' });
 
@@ -29,9 +29,11 @@ export class TaskService {
 
   async getAll(): Promise<Task[]> {
     const tasks: Task[] = [];
-    for await (const [key, value] of this._connection.iterator()) {
+    
+    for await (const [_key, value] of this._connection.iterator()) { 
       tasks.push(value);
     }
+    
     return tasks.sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());
   }
   
